@@ -1,4 +1,4 @@
-package lecture01.problem02;
+package lecture01.problem03;
 
 import java.util.Scanner;
 
@@ -10,16 +10,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
+
         System.out.println(solution(str));
     }
 
-    public static String solution(String str) {
+    private static String solution(String str) {
         String ans = "";
-        for (char c : str.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                ans += Character.toLowerCase(c);
-            } else {
-                ans += Character.toUpperCase(c);
+        String[] strArr = str.split(" ");
+
+        for (String word : strArr) {
+            if (ans.length() < word.length()) {
+                ans = word;
             }
         }
         return ans;
