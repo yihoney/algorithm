@@ -2,10 +2,6 @@ package lecture01.problem02;
 
 import java.util.Scanner;
 
-/**
- * @author 이하늬
- * @since 1.0
- */
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
