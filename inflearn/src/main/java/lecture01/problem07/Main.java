@@ -11,11 +11,9 @@ public class Main {
 
     private static String solution(String str) {
         str = str.toUpperCase();
-        int idx = str.length() / 2 - 1;
-        while (idx >= 0) {
-            if (str.charAt(idx) == str.charAt(str.length() - 1 - idx)) {
-                idx--;
-            } else {
+        int strIdxLen = str.length() - 1;
+        for (int i = 0; i < strIdxLen / 2; i++) {
+            if (str.charAt(i) != str.charAt(strIdxLen - i)) {
                 return "NO";
             }
         }
