@@ -10,20 +10,11 @@ public class Main {
     }
 
     private static String solution(String str) {
-        str = str.toUpperCase();
-        String newStr = "";
-        for (char c : str.toCharArray()) {
-            if (Character.isAlphabetic(c)) {
-                newStr += c;
-            }
+        str = str.toUpperCase().replaceAll("[^A-Z]", "");
+        String strRvs = new StringBuilder(str).reverse().toString();
+        if (str.equals(strRvs)) {
+            return "YES";
         }
-        System.out.println(newStr);
-        int strIdxLen = newStr.length() - 1;
-        for (int i = 0; i < strIdxLen / 2; i++) {
-            if (newStr.charAt(i) != newStr.charAt(strIdxLen - i)) {
-                return "NO";
-            }
-        }
-        return "YES";
+        return "NO";
     }
 }
