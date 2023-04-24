@@ -13,34 +13,14 @@ public class Main {
     }
 
     private String solution(int num, String str) {
-        String answer = "";
+        String ans = "";
 
         for (int i = 0; i < num; i++) {
-            String input = str.substring(7 * i, 7 + 7 * i);
-            answer += step2and3(step1(input));
+            String input = str.substring(0, 7).replace('#', '1').replace('*', '0');
+            int res = Integer.parseInt(input, 2);
+            ans += (char) res;
+            str = str.substring(7);
         }
-        return answer;
-    }
-
-    private String step1(String str) {
-        String res = "";
-        for (char c : str.toCharArray()) {
-            if (c == '#') {
-                res += 1;
-            } else {
-                res += 0;
-            }
-        }
-        return res;
-    }
-
-    private char step2and3(String str) {
-        int res = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(str.length() - 1 - i) == '1') {
-                res += (int) Math.pow(2, i);
-            }
-        }
-        return (char) res;
+        return ans;
     }
 }
