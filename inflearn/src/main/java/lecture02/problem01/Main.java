@@ -1,7 +1,6 @@
 package lecture02.problem01;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +13,7 @@ public class Main {
         for (int n : solution(num, numArr)) {
             System.out.print(n + " ");
         }
+        scanner.close();
     }
 
     private static List<Integer> solution(int num, int[] numArr) {

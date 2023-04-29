@@ -10,6 +10,7 @@ public class Main {
 
         Main main = new Main();
         System.out.println(main.solution(num, str));
+        scanner.close();
     }
 
     private String solution(int num, String str) {

@@ -17,6 +17,8 @@ public class Main {
         for (String word : solution(strArr)) {
             System.out.println(word);
         }
+
+        scanner.close();
     }
 
     private static List<String> solution(String[] strArr) {

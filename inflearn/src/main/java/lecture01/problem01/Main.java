@@ -8,6 +8,7 @@ public class Main {
         String str = scanner.nextLine();
         char c = scanner.nextLine().charAt(0);
         System.out.println(solution(str, c));
+        scanner.close();
     }
 
     private static int solution(String str, char c) {

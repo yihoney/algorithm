@@ -10,6 +10,7 @@ public class Main {
         for (int num : solution(str, target)) {
             System.out.print(num + " ");
         }
+        scanner.close();
     }
 
     private static int[] solution(String str, char c) {
