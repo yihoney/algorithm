@@ -9,6 +9,7 @@ public class Main {
         int num = sc.nextInt();
         String str = sc.next();
         System.out.println(solution(num, str));
+        sc.close();
     }
 
     private static int solution(int num, String str) {
