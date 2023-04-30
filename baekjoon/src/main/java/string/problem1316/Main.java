@@ -17,7 +17,7 @@ public class Main {
         sc.close();
     }
 
-    private static int solution(int num, String[] strArr) {
+    private int solution(int num, String[] strArr) {
         int ans = 0;
         for (int i = 0; i < num; i++) {
             char[] arr = strArr[i].toCharArray();
