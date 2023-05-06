@@ -22,29 +22,21 @@ public class Main {
         int colN[] = { 0, -1, 1, 0 };
         int ans = 0;
         for (int i = 0; i < num; i++) {
+            boolean flag = true;
             for (int j = 0; j < num; j++) {
-                if (isTheBiggest(i, j, arr)) {
+                for (int k = 0; k < 4; k++) {
+                    int nx = rowN[k] + i;
+                    int ny = colN[k] + j;
+                    if (nx >= 0 && ny >= 0 && nx < num && ny < num && arr[nx][ny] >= arr[i][j]) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
                     ans++;
                 }
-                System.out.print(arr[i][j] + " ");
             }
-            System.out.println("");
         }
         return ans;
-    }
-
-    private static boolean isTheBiggest(int row, int col, int[][] arr) {
-        int baseN = arr[row][col];
-        if (baseN < arr[row - 1][col]) {
-            return false;
-        } else if (baseN < arr[row + 1][col]) {
-            return false;
-        } else if (baseN < arr[row][col - 1]) {
-            return false;
-        } else if (baseN < arr[row][col + 1]) {
-            return false;
-        } else {
-            return true;
-        }
     }
 }
