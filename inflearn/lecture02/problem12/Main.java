@@ -1,5 +1,3 @@
-package inflearn.lecture02.problem12;
-
 import java.io.*;
 import java.util.*;
 
