@@ -15,24 +15,21 @@ public class Main {
 
     private static String solution(int n, int[] arr1, int m, int[] arr2) {
         StringBuilder ans = new StringBuilder();
-        int start = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = start; j < m; j++) {
-                if (arr1[i] < arr2[j]) {
-                    ans.append(arr1[i] + " ");
-                    break;
-                } else {
-                    ans.append(arr2[j] + " ");
-                    start++;
-                }
+        int p1 = 0;
+        int p2 = 0;
+        while (p1 < n && p2 < m) {
+            if (arr1[p1] < arr2[p2]) {
+                ans.append(arr1[p1++] + " ");
+            } else {
+                ans.append(arr2[p2++] + " ");
             }
         }
-        if (start != arr2.length - 1) {
-            for (int i = start; i < m; i++) {
-                ans.append(arr2[i] + " ");
-            }
+        while (p1 < n) {
+            ans.append(arr1[p1++] + " ");
         }
-
+        while (p2 < m) {
+            ans.append(arr2[p2++] + " ");
+        }
         return ans.toString();
     }
 }
