@@ -21,17 +21,13 @@ public class Main {
         int ans = 0;
         int sum = 0;
         int lt = 0;
-        int rt = 0;
-        while (lt < n && rt < n) {
+        for (int rt = 0; rt < n; rt++) {
             sum += arr[rt];
+            while (sum > m) {
+                sum -= arr[lt++];
+            }
             if (sum == m) {
                 ans++;
-            } else if (sum > m) {
-                lt++;
-                rt = lt;
-                sum = 0;
-            } else {
-                rt++;
             }
         }
         return ans;
