@@ -1,7 +1,6 @@
 package inflearn.lecture03.problem05;
 
 import java.io.*;
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -14,18 +13,13 @@ public class Main {
         int ans = 0;
         int sum = 0;
         int lt = 1;
-        int rt = 1;
-        while (rt < n) {
-            sum += rt;
-            if (sum < n) {
-                rt++;
-            } else {
-                if (sum == n) {
-                    ans++;
-                }
-                sum = 0;
-                lt++;
-                rt = lt;
+        for (int i = 1; i < n; i++) {
+            sum += i;
+            while (sum > n) {
+                sum -= lt++;
+            }
+            if (sum == n) {
+                ans++;
             }
         }
         return ans;
