@@ -24,7 +24,7 @@ public class Main {
             if (arr[rt] == 0) {
                 k--;
             }
-            while (k > 0) {
+            while (k < 0) {
                 if (arr[lt] == 0) {
                     k++;
                 }
