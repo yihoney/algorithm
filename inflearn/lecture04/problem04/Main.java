@@ -14,18 +14,25 @@ public class Main {
     private static int solution(String str1, String str2) {
         int ans = 0;
         HashMap<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < str2.length(); i++) {
-            char c = str2.toCharArray()[i];
+        HashMap<Character, Integer> tmp = new HashMap<>();
+        for (char c : str2.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
+        for (int i = 0; i < str2.length(); i++) {
+            char c = str1.charAt(i);
+            tmp.put(c, tmp.getOrDefault(c, 0) + 1);
+        }
         int lt = 0;
-        int rt = 0;
-        char[] arr = str1.toCharArray();
-        while (rt < str1.length()) {
-            char c = arr[lt++];
-            if (map.containsKey(c)) {
-                map.put(c, map.getOrDefault(c, 0) - 1);
+        for (int rt = str2.length(); rt < str1.length(); rt++) {
+            if (map.equals(tmp)) {
+                ans++;
             }
+            tmp.put(str1.charAt(rt), tmp.getOrDefault(str1.charAt(rt), 0) + 1);
+            tmp.put(str1.charAt(lt), tmp.get(str1.charAt(lt)) - 1);
+            if (tmp.get(str1.charAt(lt)) == 0) {
+                tmp.remove(str1.charAt(lt));
+            }
+            lt++;
         }
 
         return ans;
