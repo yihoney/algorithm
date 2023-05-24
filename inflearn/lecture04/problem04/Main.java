@@ -18,16 +18,16 @@ public class Main {
         for (char c : str2.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        for (int i = 0; i < str2.length(); i++) {
+        for (int i = 0; i < str2.length() - 1; i++) {
             char c = str1.charAt(i);
             tmp.put(c, tmp.getOrDefault(c, 0) + 1);
         }
         int lt = 0;
-        for (int rt = str2.length(); rt < str1.length(); rt++) {
+        for (int rt = str2.length() - 1; rt < str1.length(); rt++) {
+            tmp.put(str1.charAt(rt), tmp.getOrDefault(str1.charAt(rt), 0) + 1);
             if (map.equals(tmp)) {
                 ans++;
             }
-            tmp.put(str1.charAt(rt), tmp.getOrDefault(str1.charAt(rt), 0) + 1);
             tmp.put(str1.charAt(lt), tmp.get(str1.charAt(lt)) - 1);
             if (tmp.get(str1.charAt(lt)) == 0) {
                 tmp.remove(str1.charAt(lt));
