@@ -49,11 +49,11 @@ public class Main {
                     tmp = null;
                     break;
                 }
-                if (tmp != null) {
-                    ans++;
-                    if (tmp.getId() == m) {
-                        return ans;
-                    }
+            }
+            if (tmp != null) {
+                ans++;
+                if (tmp.getId() == m) {
+                    return ans;
                 }
             }
         }
