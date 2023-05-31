@@ -1,4 +1,4 @@
-package inflearn.lecture06.problem01;
+package inflearn.lecture06.problem02;
 
 import java.util.*;
 import java.io.*;
@@ -17,16 +17,15 @@ public class Main {
 
     private static String solution(int n, int[] arr) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < n - 1; i++) {
-            int minIdx = i;
-            for (int j = i + 1; j < n; j++) {
-                if (arr[minIdx] > arr[j]) {
-                    minIdx = j;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < n - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int tmp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = tmp;
+                    break;
                 }
             }
-            int tmp = arr[i];
-            arr[i] = arr[minIdx];
-            arr[minIdx] = tmp;
         }
 
         for (int num : arr) {
