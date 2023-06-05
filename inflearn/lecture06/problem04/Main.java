@@ -24,7 +24,7 @@ public class Main {
 
         for (int n : arr) {
             if (cache.contains(n)) {
-                cache.remove(n);
+                cache.remove((Integer) n);
             }
             cache.addFirst(n);
 
