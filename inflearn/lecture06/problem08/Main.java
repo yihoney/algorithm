@@ -7,11 +7,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(br.readLine());
-        int m = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
         int[] arr = new int[n];
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
             arr[i] = Integer.parseInt(st.nextToken());
         }
         System.out.println(solution(n, m, arr));
@@ -19,6 +19,7 @@ public class Main {
 
     private static int solution(int n, int m, int[] arr) {
         int ans = 0;
+        Arrays.sort(arr);
         int lt = 0;
         int rt = n - 1;
         while (lt <= rt) {
