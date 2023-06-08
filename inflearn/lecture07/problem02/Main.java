@@ -1,4 +1,4 @@
-package inflearn.lecture07.problem03;
+package inflearn.lecture07.problem02;
 
 import java.io.*;
 
@@ -6,14 +6,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        System.out.println(solution(n));
+        solution(n);
     }
 
-    private static int solution(int n) {
-        if (n == 1) {
-            return 1;
+    private static void solution(int n) {
+        if (n == 0) {
+            return;
         } else {
-            return n * solution(n - 1);
+            solution(n / 2);
+            System.out.print(n % 2);
         }
     }
 
