@@ -29,6 +29,7 @@ public class Main {
         if (root == null) {
             return;
         } else {
+            System.out.print(root.data + " ");
             DFS(root.lt);
             DFS(root.rt);
         }
