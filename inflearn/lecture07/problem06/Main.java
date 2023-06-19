@@ -12,14 +12,14 @@ public class Main {
 
     private static void DFS(int L) {
         if (L == n + 1) {
-            String tmp = "";
+            StringBuilder sb = new StringBuilder();
             for (int i = 1; i <= n; i++) {
                 if (check[i] == 1) {
-                    tmp += (i + " ");
+                    sb.append(i + " ");ㅏㅓ
                 }
             }
-            if (tmp.length() > 0) {
-                System.out.println(tmp);
+            if (sb.length() > 0) {
+                System.out.println(sb.toString());
             }
         } else {
             check[L] = 1;
