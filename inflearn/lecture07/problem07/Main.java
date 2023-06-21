@@ -4,12 +4,13 @@ import java.util.*;
 
 class Node {
     int data;
-    Node lt, rt;
+    Node lt;
+    Node rt;
 
     public Node(int val) {
-        data = val;
-        lt = null;
-        rt = null;
+        this.data = val;
+        this.lt = null;
+        this.rt = null;
     }
 }
 
