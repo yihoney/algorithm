@@ -28,12 +28,12 @@ public class Main {
         System.out.println(ans);
     }
 
-    private static void DFS(int v) {
-        if (v == n) {
+    private static void DFS(int vtx) {
+        if (vtx == n) {
             ans++;
         } else {
             for (int i = 1; i <= n; i++) {
-                if (graph[v][i] == 1 && check[i] == 0) {
+                if (graph[vtx][i] == 1 && check[i] == 0) {
                     check[i] = 1;
                     DFS(i);
                     check[i] = 0;
