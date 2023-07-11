@@ -1,4 +1,4 @@
-package swea.ex;
+package swea.ex1;
 
 import java.util.Scanner;
 import java.util.HashMap;

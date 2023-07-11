@@ -15,7 +15,7 @@ public class Main {
             StringBuilder sb = new StringBuilder();
             for (int i = 1; i <= n; i++) {
                 if (check[i] == 1) {
-                    sb.append(i + " ");ㅏㅓ
+                    sb.append(i + " ");
                 }
             }
             if (sb.length() > 0) {
