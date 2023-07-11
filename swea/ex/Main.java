@@ -1,23 +1,34 @@
 package swea.ex;
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
+import java.util.HashMap;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
-        int n = 0;
-        while (n <= t) {
-            n = Integer.parseInt(br.readLine());
+class Solution {
+    public static void main(String args[]) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int T;
+        T = sc.nextInt();
+        for (int test_case = 1; test_case <= T; test_case++) {
+            int n = sc.nextInt();
+            HashMap<Integer, Integer> map = new HashMap<>();
+            int[] arr = new int[1000];
+            int maxV = 0;
+            int maxK = 0;
+            for (int i = 0; i < 1000; i++) {
+                arr[i] = sc.nextInt();
+                map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+                int curV = map.get(arr[i]);
+                if (curV > maxV) {
+                    maxK = arr[i];
+                    maxV = curV;
+                } else if (curV == maxV) {
+                    if (maxK < arr[i]) {
+                        maxK = arr[i];
+                    }
 
-            System.out.println("#" + n + " " + solution(arr));
+                }
+            }
+            System.out.println("#" + test_case + " " + maxK);
         }
-    }
-
-    public static int solution(int[] arr) {
-        int ans = 0;
-
-        return ans;
     }
 }
