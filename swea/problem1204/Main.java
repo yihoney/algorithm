@@ -1,9 +1,9 @@
-package swea.ex1;
+package swea.problem1204;
 
 import java.util.Scanner;
 import java.util.HashMap;
 
-class Solution {
+public class Main {
     public static void main(String args[]) throws Exception {
         Scanner sc = new Scanner(System.in);
         int T;

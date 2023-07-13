@@ -1,8 +1,8 @@
-package swea.ex3;
+package swea.problem1961;
 
 import java.util.Scanner;
 
-class Solution {
+public class Main {
     public static void main(String args[]) throws Exception {
 
         Scanner sc = new Scanner(System.in);
