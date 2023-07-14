@@ -24,14 +24,14 @@ public class Main {
         int[] arr = new int[n + 1];
         st = new StringTokenizer(br.readLine());
         for (int i = 1; i <= n; i++) {
-            arr[i] = arr[i - 1] + Integer.parseInt(st.nextToken());
+            arr[i] = arr[i - 1] + Integer.parseInt(st.nextToken()); // 누적합을 구해 저장해둠
         }
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
-            int lt = Integer.parseInt(st.nextToken());
-            int rt = Integer.parseInt(st.nextToken());
-            System.out.println(arr[rt] - arr[lt - 1]);
+            int lt = Integer.parseInt(st.nextToken()); // 합을 구해야 하는 시작값 입력
+            int rt = Integer.parseInt(st.nextToken()); // 합을 구해야 하는 종료값 입력
+            System.out.println(arr[rt] - arr[lt - 1]); // 합 출력
         }
     }
 }

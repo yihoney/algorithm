@@ -26,20 +26,20 @@ public class Main {
         int ans = Integer.MAX_VALUE; // 최소값을 발견하기 위해 초깃값을 정수의 최대값으로 설정
         StringTokenizer st = new StringTokenizer(str, "-"); // 입력받은 문자열을 "-" 연산자 기준으로 분리
 
-        while (st.hasMoreTokens()) { // "-" 연산자 기준으로 나뉜 값들이 더이상 존재하지 않을 때까지 반복문 실행
+        while (st.hasMoreTokens()) { // "-" 연산자 기준으로 나뉜 토큰들이 더이상 존재하지 않을 때까지 반복문 실행
             int tmp = 0; // 임시로 값을 저장할 변수 선언, 값은 0으로 초기화
-            String[] tmpArr = st.nextToken().split("\\+"); // "-" 연산자 기준으로 나뉜 문자열을 "+" 연산자 기준으로 분리
+            String[] tmpArr = st.nextToken().split("\\+"); // "-" 연산자 기준으로 나뉜 토큰을 "+" 연산자 기준으로 분리
 
             for (String s : tmpArr) {
                 tmp += Integer.parseInt(s); // "+" 기준으로 분리된 값들을 다 더해 tmp에 저장
             }
 
-            if (ans == Integer.MAX_VALUE) { // 첫번째 값일 경우
+            if (ans == Integer.MAX_VALUE) { // 첫번째 토큰일 경우
                 ans = tmp; // tmp 값은 첫번째 수 (첫번째 수는 양수가 되어야 함)
-            } else { // 두번째 값부터는
+            } else { // 두번째 토큰부터는
                 ans -= tmp; // 기존의 ans 값에서 빼줌
             }
         }
-        return ans;
+        return ans; // 최종으로 ans 리턴
     }
 }
