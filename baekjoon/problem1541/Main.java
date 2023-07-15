@@ -1,11 +1,12 @@
-package string.problem1541;
+package baekjoon.problem1541;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
 /**
  * @author 이하늬
- *         <pre
+ * 
+ *         <pre>
  *         문제 - 백준 1541 (잃어버린 괄호)
  *         풀이방법
  *         1. - 연산자 기준으로 입력 문자열을 분리한다

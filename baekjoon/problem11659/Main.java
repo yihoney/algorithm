@@ -5,7 +5,8 @@ import java.util.*;
 
 /**
  * @author 이하늬
- *         <pre
+ * 
+ *         <pre>
  *         문제 - https://www.acmicpc.net/problem/11659
  *         풀이방법
  *         1. 수를 입력 받을 때부터 prefix sum을 미리 구해 배열에 저장
