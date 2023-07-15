@@ -33,16 +33,14 @@ public class Solution {
 
     private static int solution(int[][] arr) {
         int ans = 1;
-        HashSet<Integer> set1 = new HashSet<>(); // 가로
-        HashSet<Integer> set2 = new HashSet<>(); // 세로
-        HashSet<Integer> set3 = new HashSet<>(); // 작은 격자
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+        HashSet<Integer> set3 = new HashSet<>();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                set1.add(arr[i][j]);
-                set2.add(arr[j][i]);
-            }
-            if (set1.size() < 9 || set2.size() < 9) {
-                return 0;
+                if (!set1.add(arr[i][j]) || !set2.add(arr[j][i])) {
+                    return 0;
+                }
             }
             set1.clear();
             set2.clear();
@@ -51,11 +49,10 @@ public class Solution {
             for (int j = 0; j < 9; j += 3) {
                 for (int k = 0; k < 3; k++) {
                     for (int l = 0; l < 3; l++) {
-                        set3.add(arr[k + i][l + j]);
+                        if (!set3.add(arr[k + i][l + j])) {
+                            return 0;
+                        }
                     }
-                }
-                if (set3.size() < 9) {
-                    return 0;
                 }
                 set3.clear();
             }
