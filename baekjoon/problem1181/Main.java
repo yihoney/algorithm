@@ -3,6 +3,16 @@ package string.problem1181;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author 이하늬
+ * 
+ *         <pre>
+ *         문제 - 백준 1181 (단어 정렬)
+ *         - 길이가 짧은 것부터 (이가 같으면 사전 순으로 정렬)
+ *         - 중복된 단어는 하나만 남기고 제거
+ *         </pre>
+ */
+
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,7 +26,7 @@ public class Main {
 
     private static String solution(int num, String[] strArr) {
 
-        Arrays.sort(strArr, (s1, s2) -> {
+        Arrays.sort(strArr, (s1, s2) -> { // 문자열 배열 정렬하기 위해 Arrays.sort 재정의
             if (s1.length() == s2.length()) {
                 return s1.compareTo(s2);
             } else {
@@ -26,7 +36,7 @@ public class Main {
 
         StringBuilder ans = new StringBuilder();
 
-        ans.append(strArr[0]).append("\n");
+        ans.append(strArr[0]).append("\n"); // 우선 첫번째 단어 등록
 
         for (int i = 1; i < num; i++) {
             if (!strArr[i - 1].equals(strArr[i])) {
