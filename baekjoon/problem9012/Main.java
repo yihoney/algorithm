@@ -9,7 +9,10 @@ import java.util.*;
  *         문제 - 백준 9012 (괄호)
  *         아이디어
  *         - 스택을 활용
- *         -
+ *         - 여는 괄호가 나왔을 때 stack에 push
+ *         - 닫는 괄호가 나왔을 땐 
+ *          1) stack이 비어있을 경우 짝이 맞지 않으므로 종료
+ *          2) stack이 비어있지 않다면 stack에서 pop 수행
  *         </pre>
  */
 
@@ -51,7 +54,7 @@ public class Main {
         if (stack.isEmpty()) { // stack이 비어있다면 괄호의 짝이 다 맞은 것이므로 "YES" 리턴
             ans = "YES";
         } else {
-            ans = "NO";
+            ans = "NO"; // stack에 여는 괄호가 남아있다면 짝이 다 맞지 않으므로 "NO" 리턴
         }
         return ans;
     }

@@ -20,14 +20,14 @@ class Solution {
         boolean answer = true; // answer을 true로 초기화
 
         HashMap<String, Integer> map = new HashMap<>();
-        for (String s : phone_book) {
+        for (String s : phone_book) { // 배열에 저장되어 있는 단어들을 map에 저장
             map.put(s, 1);
         }
 
         for (String s : phone_book) {
-            for (int j = 2; j < s.length(); j++) {
-                if (map.containsKey(s.substring(0, j))) {
-                    return false;
+            for (int j = 2; j < s.length(); j++) { // substring(시작 인덱스, 종료인덱스) 메서드는 실제로는 시작인덱스-종료인덱스-1까지의 문자열을 반환하므로, 단어는 최소 1글자 이상이기 때문에 j의 초깃값은 2
+                if (map.containsKey(s.substring(0, j))) { // map에 substring을 수행한 문자열이 포함되어 있다면
+                    return false; // false 반환
                 }
             }
         }

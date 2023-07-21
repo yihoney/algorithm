@@ -27,19 +27,19 @@ public class Main {
     private static String solution(int num, String[] strArr) {
 
         Arrays.sort(strArr, (s1, s2) -> { // 문자열 배열 정렬하기 위해 Arrays.sort 재정의
-            if (s1.length() == s2.length()) {
+            if (s1.length() == s2.length()) { // 길이가 같다면 사전순으로 정렬
                 return s1.compareTo(s2);
             } else {
-                return s1.length() - s2.length();
+                return s1.length() - s2.length(); // 연산 결과가 양수일 경우 s1의 길이가 더 길은 것
             }
         });
 
         StringBuilder ans = new StringBuilder();
 
-        ans.append(strArr[0]).append("\n"); // 우선 첫번째 단어 등록
+        ans.append(strArr[0]).append("\n"); // 비교하기 위해 우선 첫번째 단어 등록
 
         for (int i = 1; i < num; i++) {
-            if (!strArr[i - 1].equals(strArr[i])) {
+            if (!strArr[i - 1].equals(strArr[i])) { // 앞의 문자열과 같지 않은 것만 답에 추가
                 ans.append(strArr[i]).append('\n');
             }
         }
