@@ -13,7 +13,7 @@ class Location {
     }
 }
 
-public class miro {
+public class Maze02 {
 
     public static Location[] moveVal = new Location[] { new Location("-1", "0"), new Location("0", "1"),
             new Location("1", "0"), new Location("0", "-1") };
@@ -51,16 +51,18 @@ public class miro {
 
         for (int i = 0; i < moveArr.length; i += 2) {
 
-            for (int j = 0; j < moveArr[i + 1]; j++) {
+            for (int j = 0; j < moveArr[i + 1]; j++) { // 이동 칸 수 만큼 반복
                 start.row += moveVal[moveArr[i] - 1].row;
                 start.col += moveVal[moveArr[i] - 1].col;
 
+                // 이동한 좌표에 점퍼가 있을 경우 (0,0)
                 for (Location l : jprArr) {
                     if (start.row == l.row && start.col == l.col) {
                         return "0 0";
                     }
                 }
 
+                // N*N 칸을 벗어났을 경우 (0,0)
                 if (start.row < 0 || start.col < 0 || start.row > arrN || start.col > arrN) {
                     return "0 0";
                 }
