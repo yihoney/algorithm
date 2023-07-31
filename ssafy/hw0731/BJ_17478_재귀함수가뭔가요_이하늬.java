@@ -2,7 +2,7 @@ package ssafy.hw0731;
 
 import java.io.*;
 
-public class Main {
+public class BJ_17478_재귀함수가뭔가요_이하늬 {
     public static StringBuilder sb = new StringBuilder();
 
     private static void recursive(int r, int n) {
