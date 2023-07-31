@@ -15,8 +15,8 @@ class Location {
 
 public class Maze02 {
 
-    public static Location[] moveVal = new Location[] { new Location("-1", "0"), new Location("0", "1"),
-            new Location("1", "0"), new Location("0", "-1") };
+    public static Point[] moveVal = new Point[] { new Point("-1", "0"), new Point("0", "1"),
+            new Point("1", "0"), new Point("0", "-1") };
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,13 +25,13 @@ public class Maze02 {
         for (int i = 1; i <= tc; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int arrN = Integer.parseInt(st.nextToken()); // 배열 크기
-            Location start = new Location(st.nextToken(), st.nextToken()); // 출발점의 좌표
+            Point start = new Point(st.nextToken(), st.nextToken()); // 출발점의 좌표
 
             int jumperN = Integer.parseInt(st.nextToken()); // 점퍼 갯수
-            Location jprArr[] = new Location[jumperN]; // 점퍼 좌표가 담긴 배열
+            Point jprArr[] = new Point[jumperN]; // 점퍼 좌표가 담긴 배열
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < jumperN; j++) {
-                jprArr[j] = new Location(st.nextToken(), st.nextToken());
+                jprArr[j] = new Point(st.nextToken(), st.nextToken());
             }
 
             int moveN = Integer.parseInt(br.readLine()); // 방향 지시의 갯수
@@ -46,7 +46,7 @@ public class Maze02 {
         }
     }
 
-    private static String solution(int arrN, Location start, Location[] jprArr, int[] moveArr) {
+    private static String solution(int arrN, Point start, Point[] jprArr, int[] moveArr) {
         String str = null;
 
         for (int i = 0; i < moveArr.length; i += 2) {
@@ -56,7 +56,7 @@ public class Maze02 {
                 start.col += moveVal[moveArr[i] - 1].col;
 
                 // 이동한 좌표에 점퍼가 있을 경우 (0,0)
-                for (Location l : jprArr) {
+                for (Point l : jprArr) {
                     if (start.row == l.row && start.col == l.col) {
                         return "0 0";
                     }
