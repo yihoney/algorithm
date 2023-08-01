@@ -2,14 +2,27 @@ package ssafy.hw0731;
 
 import java.io.*;
 
-public class BJ_17478_재귀함수가뭔가요_이하늬 {
+/**
+ * @author 이하늬
+ * 
+ *         <pre>
+ *         문제 - 백준 17478 재귀함수가뭔가요
+ *         아이디어
+ *         - 반복한 횟수가 출력 하고자 하는 횟수 n번을 넘기 전 / 같아졌을 경우를 나뉘어서 답변
+ *         - 재귀 호출을 마친 다음 "라고 답변하였지."로 마무리
+ * 
+ *         - 메모리: 14732KB, 시간: 140ms
+ *         </pre>
+ */
+
+public class Main {
     public static StringBuilder sb = new StringBuilder();
 
     private static void recursive(int r, int n) {
         print(r);
         sb.append("\"재귀함수가 뭔가요?\"\n");
 
-        if (r < n) {
+        if (r < n) { // 반복한 횟수가 출력 하고자 하는 횟수 n번을 넘기 전
             print(r);
             sb.append("\"잘 들어보게. 옛날옛날 한 산 꼭대기에 이세상 모든 지식을 통달한 선인이 있었어.\n");
             print(r);
@@ -19,7 +32,7 @@ public class BJ_17478_재귀함수가뭔가요_이하늬 {
             recursive(r + 1, n);
         }
 
-        if (r == n) {
+        if (r == n) { // 반복한 횟수가 출력 하고자 하는 횟수 n번과 같아졌을 경우
             print(r);
             sb.append("\"재귀함수는 자기 자신을 호출하는 함수라네\"\n");
         }

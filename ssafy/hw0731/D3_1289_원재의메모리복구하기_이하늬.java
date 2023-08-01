@@ -2,7 +2,20 @@ package ssafy.hw0731;
 
 import java.io.*;
 
-public class Main {
+/**
+ * @author 이하늬
+ * 
+ *         <pre>
+ *         문제 - SWEA 1289 원재의메모리복구하기
+ *         아이디어
+ *         - 모든 비트를 '0'으로 초기화
+ *         - 재귀 호출로 이전 값과 현재 값을 비교하여 다른 경우 갯수를 세어주고, 이전 값을 현재 값으로 수정
+ * 
+ *         - 메모리: 18584KB, 시간: 110ms
+ *         </pre>
+ */
+
+public class Solution {
     public static int ans = 0;
 
     public static void main(String[] args) throws IOException {
