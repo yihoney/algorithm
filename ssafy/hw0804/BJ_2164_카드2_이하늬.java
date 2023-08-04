@@ -1,4 +1,4 @@
-import ssafy.hw0804;
+package ssafy.hw0804;
 
 /**
  * 백준 2164 카드2
@@ -34,11 +34,11 @@ public class BJ_2164 {
 			queue.add(n);
 		}
 
-		while (queue.size() != 1) {
-			queue.poll();
-			queue.add(queue.peek());
-			queue.poll();
+		while (queue.size() != 1) { // 큐에 남아있는 카드가 1장이 아니라면 반복문 수행
+			queue.poll(); // 맨 앞의 카드를 버림
+			queue.add(queue.peek()); // 맨 위에 있는 카드를 제일 뒤로 옮기고
+			queue.poll(); // 맨 앞에 있는 카드를 버림
 		}
-		System.out.println(queue.peek());
+		System.out.println(queue.peek()); // 마지막 남은 카드의 숫자 출력
 	}
 }
