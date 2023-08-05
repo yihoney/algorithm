@@ -1,3 +1,5 @@
+package swea.D4.problem1210;
+
 /**
  * 
  * @author 이하늬
