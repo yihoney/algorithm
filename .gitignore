@@ -5,6 +5,10 @@
 ssafy
 .DS_Store
 
+### 제출 파일 제외 ###
+*.zip
+*.pptx
+
 ### Java ###
 # Compiled class file
 *.class
