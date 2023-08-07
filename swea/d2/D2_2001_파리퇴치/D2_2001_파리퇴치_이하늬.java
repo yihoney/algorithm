@@ -1,4 +1,4 @@
-package swea.D2.problem2001;
+package swea.D2.D2_2001_파리퇴치;
 
 import java.io.BufferedReader;
 import java.io.IOException;

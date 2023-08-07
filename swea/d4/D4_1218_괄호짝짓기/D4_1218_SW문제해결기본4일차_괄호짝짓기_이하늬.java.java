@@ -1,4 +1,4 @@
-package swea.D4.problem1218;
+package swea.D4.D4_1218_괄호짝짓기;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package swea.d3.D3_1208_flatten;
+package swea.D3.D3_1208_flatten;
 
 import java.io.*;
 import java.util.*;

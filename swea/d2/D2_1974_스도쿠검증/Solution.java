@@ -1,4 +1,4 @@
-package swea.D2.problem1974;
+package swea.D2.D2_1974_스도쿠검증;
 
 import java.util.*;
 import java.io.*;

@@ -1,4 +1,5 @@
-package swea.D3.problem2805;
+package swea.D3.D3_2805_농작물수
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

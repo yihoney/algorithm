@@ -1,3 +1,4 @@
+package swea.D3.D3_1225_암호생성기;
 package swea.d3.1225_암호생성기;
 
 import java.io.*;

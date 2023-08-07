@@ -1,4 +1,4 @@
-package swea.D3.problem1289;
+package swea.D3.D3_1289_원재의메모리복구하기;
 
 import java.io.*;
 

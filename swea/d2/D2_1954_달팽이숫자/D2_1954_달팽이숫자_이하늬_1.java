@@ -1,12 +1,9 @@
-package swea.D2.problem1954;
+package swea.D2.D2_1954_달팽이숫자;
 
 import java.io.*;
 
 /**
- * 
- * @author 이하늬
- * 
- *         <pre>
+ * <pre>
  * 			크기가 N인 arr[i][j]이 있을 때,
  *          1. i=0은 그대로이고, j=0이  j=N-1이 될 때까지 계속 증가
  *          2. j=N-1은 그대로이고, i=0이 j=N-1이 될 때까지 계속 증가
@@ -14,14 +11,12 @@ import java.io.*;
  *          4. j=0은 그대로이고, i=N-1이 i=0이 될 때까지 계속 감소
  *          를 반복한다.
  * 
- *          규칙은 찾았는데 너무 궁금해서 남의 코드를 봤습니다....ㅜㅜ
- *          이번 주말에 다시 내 힘으로 해볼 것 !! 입니다...
+ *          @author 이하늬
  * 
- *         </pre>
- * 
+ * </pre>
  */
 
-public class Solution {
+public class D2_1954_달팽이숫자_이하늬_1 {
     static int[] dx = { 0, 1, 0, -1 };
     static int[] dy = { -1, 0, 1, 0 };
     static int[][] arr;

@@ -1,4 +1,4 @@
-package swea.D2.problem1961;
+package swea.D2.D2_1961_숫자배열회전;
 
 import java.util.Scanner;
 

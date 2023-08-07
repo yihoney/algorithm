@@ -1,4 +1,4 @@
-package swea.D4.problem1210;
+package swea.D4.D4_1210_Ladder1;
 
 /**
  * 

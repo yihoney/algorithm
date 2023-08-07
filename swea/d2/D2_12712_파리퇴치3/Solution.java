@@ -1,4 +1,4 @@
-package swea.d2.D2_12712_파리퇴치3;
+package swea.D2.D2_12712_파리퇴치3;
 
 import java.util.Scanner;
 
