@@ -4,6 +4,7 @@
 **/ssafy/
 ssafy
 .DS_Store
+.vscode/
 
 ### 제출 파일 제외 ###
 *.zip
