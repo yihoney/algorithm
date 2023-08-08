@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "D4_1233_사칙연산유효성검사_이하늬",
+            "request": "launch",
+            "mainClass": "swea.D4.D4_1233_사칙연산유효성검사.D4_1233_사칙연산유효성검사_이하늬",
+            "projectName": "algorithm_cf643815"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
