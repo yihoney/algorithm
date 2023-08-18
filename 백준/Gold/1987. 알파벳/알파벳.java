@@ -4,8 +4,7 @@ import java.util.*;
 public class Main {
 	static char[][] arr;
 	static int[][] dirs = new int[][] { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
-	static boolean[][] isVisited;
-	static HashSet<Character> set = new HashSet<>();
+	static boolean[] isVisited;
 	static int R, C, ans;
 
 	public static void main(String[] args) throws IOException {
@@ -15,7 +14,7 @@ public class Main {
 		R = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
 		arr = new char[R + 2][C + 2];
-		isVisited = new boolean[R + 2][C + 2];
+		isVisited = new boolean[26];
 
 		for (int i = 1; i <= R; i++) {
 			String str = br.readLine();
@@ -35,16 +34,16 @@ public class Main {
 		int cx = pos[0];
 		int cy = pos[1];
 
-		if (set.contains(arr[cx][cy])) {
-			
+		if (isVisited[arr[cx][cy] - 'A']) {
+
 			ans = Math.max(ans, cnt);
 			return;
-			
+
 		} else {
 
 			for (int dir = 0; dir < dirs.length; dir++) {
 
-				set.add(arr[cx][cy]);
+				isVisited[arr[cx][cy] - 'A'] = true;
 
 				int nx = cx + dirs[dir][0];
 				int ny = cy + dirs[dir][1];
@@ -56,7 +55,7 @@ public class Main {
 				dfs(new int[] { nx, ny }, cnt + 1);
 
 			}
-			set.remove(arr[cx][cy]);
+			isVisited[arr[cx][cy] - 'A'] = false;
 		}
 	}
 }
