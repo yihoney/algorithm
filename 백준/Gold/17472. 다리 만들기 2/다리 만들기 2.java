@@ -4,7 +4,9 @@ import java.util.*;
 /**
  * BJ_17472_다리만들기2
  * 
- * - 모든 섬이 연결됐는지 확인 => 섬이 연결될 때마다 set에 섬을 추가해 최종적으로 set.size()가 섬 갯수와 같은지 확인 -
+ * - BFS: 섬마다 각 다른 번호 부여하기 
+ * - DFS: 다리 지어 섬과 섬 연결하기 
+ * - MST: 최소 총 다리 길이 구하기 
  * 
  * @author yihoney
  */
@@ -19,11 +21,11 @@ class Node {
 }
 
 class MstNode implements Comparable<MstNode> {
-	int island1, island2, length;
+	int from, to, length;
 
 	MstNode(int island1, int island2, int length) {
-		this.island1 = island1;
-		this.island2 = island2;
+		this.from = island1;
+		this.to = island2;
 		this.length = length;
 	}
 
@@ -68,8 +70,6 @@ public class Main {
 				if (graph[r][c] == 1 && !visited[r][c]) {
 					cnt++;
 					markIsland(r, c);
-//					System.out.println("cnt: " + cnt);
-//					printGraph();
 				}
 			}
 		}
@@ -91,74 +91,6 @@ public class Main {
 		System.out.println(ans);
 	}
 
-	private static void kruskal() {
-
-		// 서로소 집합 생성하는 메서드
-		p = new int[cnt + 1];
-		for (int i = 1; i <= cnt; i++) {
-			p[i] = i;
-		}
-
-		boolean[] linked = new boolean[cnt + 1];
-		int bridge = 0;
-
-		while (!pq.isEmpty()) {
-			MstNode cur = pq.poll();
-
-			int p1 = find(cur.island1);
-			int p2 = find(cur.island2);
-
-			if (p1 != p2) {
-				union(p1, p2);
-				linked[p1] = true;
-				linked[p2] = true;
-				ans += cur.length;
-				bridge++;
-			}
-		}
-
-		// 총 다리 길이가 0 이거나 다리 갯수가 모든 섬의 - 1 개가 아니라면
-		if (ans == 0 || bridge != cnt - 1) {
-			System.out.println(-1);
-			System.exit(0);
-		}
-
-	}
-
-	private static int find(int n) {
-		if (p[n] == n) {
-			return n;
-		}
-
-		return p[n] = find(p[n]);
-	}
-
-	private static void union(int i1, int i2) {
-		p[i2] = i1;
-	}
-
-	private static void buildBridge(int x, int y, int startIsland, int d, int len) {
-
-		int curIsland = graph[x][y];
-		// 현재 위치가 섬이고, 시작 섬과 다른 섬이라면
-
-		if (curIsland != 0 && curIsland != startIsland) {
-			if (len >= 2) { // 다리 길이가 2 이상이라면
-				pq.offer(new MstNode(startIsland, curIsland, len));
-			}
-			return;
-		}
-
-		int nx = x + dirs[d][0];
-		int ny = y + dirs[d][1];
-
-		// 다음 위치가 배열의 범위를 벗어났거나 시작 섬과 같은 섬이라면 종료
-		if (!isValidScope(nx, ny) || graph[nx][ny] == startIsland) {
-			return;
-		}
-
-		buildBridge(nx, ny, startIsland, d, len + 1);
-	}
 
 	private static void markIsland(int r, int c) {
 		Queue<Node> queue = new ArrayDeque<>();
@@ -166,7 +98,6 @@ public class Main {
 		queue.offer(new Node ( r, c ));
 		visited[r][c] = true;
 
-		
 		while (!queue.isEmpty()) {
 			Node cur = queue.poll();
 			islands.get(cnt).add(new Node(cur.x, cur.y));
@@ -189,6 +120,12 @@ public class Main {
 
 	}
 
+	/**
+	 * 배열의 범위 안에 있는지 확인하는 메서드 
+	 * @param nx 기준 x좌표 
+	 * @param ny 기준 y좌표 
+	 * @return 범위 안에 있다면 true를, 범위를 벗어난다면 false를 반환 
+	 */
 	private static boolean isValidScope(int nx, int ny) {
 		if (nx < 0 || ny < 0 || nx >= N || ny >= M) {
 			return false;
@@ -196,13 +133,90 @@ public class Main {
 
 		return true;
 	}
+	
+	private static void buildBridge(int x, int y, int startIsland, int d, int len) {
 
-//	private static void printGraph() {
-//		for (int r = 0; r < N; r++) {
-//			for (int c = 0; c < M; c++) {
-//				System.out.print(graph[r][c] + " ");
-//			}
-//			System.out.println();
-//		}
-//	}
+		int curIsland = graph[x][y];
+		// 현재 위치가 섬이고, 시작 섬과 다른 섬이라면
+
+		if (curIsland != 0 && curIsland != startIsland) {
+			if (len >= 2) { // 다리 길이가 2 이상이라면
+				pq.offer(new MstNode(startIsland, curIsland, len));
+			}
+			return;
+		}
+
+		// 다음 위치 계산 
+		int nx = x + dirs[d][0];
+		int ny = y + dirs[d][1];
+
+		// 다음 위치가 배열의 범위를 벗어났거나 시작 섬과 같은 섬이라면 종료
+		if (!isValidScope(nx, ny) || graph[nx][ny] == startIsland) {
+			return;
+		}
+
+		// 다음 좌표로 이동 (좌표는 계산한 좌표로, 길이는 현재 길이 + 1로 변경)
+		buildBridge(nx, ny, startIsland, d, len + 1);
+	}
+
+	
+	private static void kruskal() {
+
+		// 서로소 집합 생성하는 메서드
+		p = new int[cnt + 1];
+		for (int i = 1; i <= cnt; i++) {
+			p[i] = i;
+		}
+
+		// 연결 여부 저장할 플래그 배열 
+		boolean[] linked = new boolean[cnt + 1];
+		// 다리 갯수 저장할 변수 
+		int bridge = 0;
+
+		while (!pq.isEmpty()) {
+			MstNode cur = pq.poll();
+
+			// 각 섬의 집합 대표자 번호 찾기 
+			int p1 = find(cur.from);
+			int p2 = find(cur.to);
+
+			if (p1 != p2) { // 다른 집합에 속해있다면 
+				union(p1, p2); // p1과 p2 같은 집합으로 합쳐주기 
+				// 연결 여부 true로 변경 
+				linked[p1] = true; 
+				linked[p2] = true;
+				ans += cur.length; // 총 다리 길이에 현재 다리 길이 더해주기 
+				bridge++; // 연결된 다리 갯수 1개 더해주기 
+			}
+		}
+
+		// 총 다리 길이가 0 이거나 다리 갯수가 모든 섬의 - 1 개가 아니라면
+		if (ans == 0 || bridge != cnt - 1) {
+			System.out.println(-1);
+			System.exit(0);
+		}
+
+	}
+
+	/**
+	 * 집합의 대표자 번호 찾는 메서드 
+	 * @param n 대표자를 찾을 섬 
+	 * @return 섬이 속해있는 집합의 대표자 
+	 */
+	private static int find(int n) {
+		if (p[n] == n) {
+			return n;
+		}
+
+		return p[n] = find(p[n]);
+	}
+
+	/**
+	 * i1과 i2 같은 집합으로 합치기 
+	 * @param p1 합칠 섬 1의 대표자 
+	 * @param p2 합칠 섬 2의 대표자 
+	 */
+	private static void union(int p1, int p2) {
+		p[p2] = p1; // i2의 대표자를 i1의 대표자로 설정 
+	}
 }
