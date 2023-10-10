@@ -6,6 +6,7 @@ public class Solution {
 	static List<List<Integer>> graph;
 	static int N, M, ans;
 	static int p[];
+	static boolean visited[];
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,7 +32,14 @@ public class Solution {
 				graph.get(p2).add(p1);
 			}
 
-			getGroupCnt();
+			visited = new boolean[N + 1];
+			for (int i = 1; i <= N; i++) {
+				if (visited[i]) {
+					continue;
+				}
+				getGroupCnt_DFS(i);
+				ans++;
+			}
 
 			sb.append("#").append(tc).append(" ").append(ans).append("\n");
 		}
@@ -39,31 +47,15 @@ public class Solution {
 		System.out.println(sb);
 	}
 
-	private static void getGroupCnt() {
+	private static void getGroupCnt_DFS(int idx) {
 
-		Queue<Integer> queue = new ArrayDeque<>();
-		boolean visited[] = new boolean[N + 1];
-
-		for (int idx = 1; idx <= N; idx++) {
-			if (visited[idx]) {
-				continue;
+		visited[idx] = true;
+		List<Integer> list = graph.get(idx);
+		for (int m = 0; m < list.size(); m++) {
+			int cur = list.get(m);
+			if (!visited[cur]) {
+				getGroupCnt_DFS(cur); // 다음 사람 살펴보기
 			}
-			
-			queue.offer(idx);
-			
-			while (!queue.isEmpty()) {
-				int n = queue.poll();
-				visited[n] = true;
-				List<Integer> list = graph.get(n);
-				for (int m = 0; m < list.size(); m++) {
-					int cur = list.get(m);
-					if (!visited[cur]) {
-						queue.offer(cur);
-					}
-				}
-			}
-			
-			ans++;
 		}
 	}
 }
