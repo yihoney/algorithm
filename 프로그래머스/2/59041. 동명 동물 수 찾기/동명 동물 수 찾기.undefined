@@ -1,0 +1,6 @@
+  SELECT ai.name AS NAME
+       , COUNT(ai.name) AS COUNT
+    FROM animal_ins ai
+GROUP BY name
+  HAVING COUNT >= 2
+ORDER BY ai.name;
